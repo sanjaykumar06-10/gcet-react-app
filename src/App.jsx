@@ -14,7 +14,7 @@ function App() {
     <header>
       <h1> Venkat Sanjay </h1>
           <Link to="/">Home</Link>-
-          <Link to="/cart">Cart</Link>
+          <Link to="/cart">Cart</Link>-
            <Link to="/login">Login</Link>
          
       <hr />
