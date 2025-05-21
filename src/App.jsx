@@ -6,7 +6,21 @@ import './App.css'
 function App() {
   return (
     <>
-    <h1>React Store</h1>
+    <header>
+      <h1> sanjay </h1>
+      <hr />
+    </header>
+    <main>
+      <h2>
+        Mern Stack
+      </h2>
+      <hr />
+    </main>
+    <footer>
+      <p>&copy; 2025 MyPortfolio. All rights reserved.</p>
+      <hr />
+    </footer>
+    <hr />
     </>
   )
 }
