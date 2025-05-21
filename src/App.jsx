@@ -7,7 +7,7 @@ function App() {
   return (
     <>
     <header>
-      <h1> sanjay </h1>
+      <h1> Venkat Sanjay </h1>
       <hr />
     </header>
     <main>
