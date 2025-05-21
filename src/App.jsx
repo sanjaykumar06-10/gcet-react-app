@@ -14,7 +14,7 @@ function App() {
       <h1> Venkat Sanjay </h1>
           <Link to="/">Home</Link>-
           <Link to="/cart">Cart</Link>
-         <Link to="/login">login</Link>
+         
       <hr />
     </header>
     <main>
@@ -22,7 +22,7 @@ function App() {
             <Route index element={<Product />} />
             <Route path="/" element={<Product/>}></Route>
             <Route path="/cart" element={<Cart/>}></Route>
-            <Route path="/login" element={<Login/>}></Route>
+           
           </Routes>
       <hr />
     </main>
