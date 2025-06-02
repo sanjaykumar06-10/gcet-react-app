@@ -5,17 +5,16 @@ import { useNavigate } from "react-router-dom";
 export default function Logout() {
   const { setUser } = useContext(AppContext);
   const navigate = useNavigate();
-
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    // Log out the user and redirect
+    // Log out the user
     setUser(null);
     navigate("/login");
 
-    // Fetch products from backend
+    // ✅ Fetch products correctly
     fetch("http://localhost:8080/product")
-      .then((res) => res.send())
+      .then((res) => res.json()) // ✅ fix here
       .then((data) => setProducts(data))
       .catch((err) => console.error("Error fetching products:", err));
   }, []);
@@ -23,7 +22,6 @@ export default function Logout() {
   return (
     <div>
       <div>Logging out...</div>
-
       <div>
         <h3>Products (fetched on logout):</h3>
         {products.length === 0 ? (
