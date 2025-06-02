@@ -15,7 +15,7 @@ export default function Logout() {
 
     // Fetch products from backend
     fetch("http://localhost:8080/product")
-      .then((res) => res.json())
+      .then((res) => res.send())
       .then((data) => setProducts(data))
       .catch((err) => console.error("Error fetching products:", err));
   }, []);
