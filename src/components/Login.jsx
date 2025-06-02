@@ -1,49 +1,47 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { AppContext } from "../App";
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-
+import axios from "axios";
 export default function Login() {
   const { users, user, setUser } = useContext(AppContext);
-  const [email, setEmail] = useState("");
-  const [pass, setPass] = useState("");
-  const [msg, setMsg] = useState("");
-  const navigate = useNavigate();
-
-  const handleSubmit = () => {
-    const found = users.find(
-      (u) => u.email === email.trim() && u.pass === pass.trim()
-    );
-    if (found) {
-      setUser(found);
-      setMsg("");
-      navigate("/");
+  const [msg, setMsg] = useState();
+  const Navigate = useNavigate();
+  const API = import.meta.env.VITE_API_URL;
+  const handleSubmit = async () => {
+    // const found = users.find(
+    //   (value) => value.email === user.email && value.pass === user.pass
+    // );
+    const url = `${API}/login`;
+    const found = await axios.post(url, user);
+    if (found.data.token) {
+      setUser(found.data);
+      Navigate("/");
     } else {
-      setMsg("Invalid email or password.");
+      setMsg("Invalid User or Password");
     }
   };
 
   const goToRegister = () => {
-    navigate("/register");
+    Navigate("/register");
   };
 
   return (
     <div style={{ margin: "30px" }}>
       <h3>Login</h3>
-      {msg && <p style={{ color: "red" }}>{msg}</p>}
+      {msg}
       <p>
         <input
           type="text"
           placeholder="Email address"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={(e) => setUser({ ...user, email: e.target.value })}
         />
       </p>
       <p>
         <input
           type="password"
           placeholder="Password"
-          value={pass}
-          onChange={(e) => setPass(e.target.value)}
+          onChange={(e) => setUser({ ...user, pass: e.target.value })}
         />
       </p>
       <button onClick={handleSubmit}>Submit</button>
