@@ -1,42 +1,37 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState, createContext } from "react";
+import "./App.css";
 import Product from "./components/Product";
 import Cart from "./components/Cart";
-import Login from './components/Login';
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import Login from "./components/Login";
+import Register from "./components/Register";
+import Logout from "./components/Logout";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+// Create App Context
+export const AppContext = createContext();
 
 function App() {
-  return (
-    <div>
-    <BrowserRouter>
-    <header>
-      <h1> Venkat Sanjay </h1>
-          <Link to="/">Home</Link>-
-          <Link to="/cart">Cart</Link>-
-           <Link to="/login">Login</Link>
-         
-      <hr />
-    </header>
-    <main>
-          <Routes>
-            <Route index element={<Product />} />
-            <Route path="/" element={<Product/>}></Route>
-            <Route path="/cart" element={<Cart/>}></Route>
-            <Route path="/login" element={<Login/>}></Route>
+  const [users, setUsers] = useState([]); // All registered users
+  const [user, setUser] = useState(null); // Currently logged-in user (null when no user)
 
-           
-          </Routes>
-      <hr />
-    </main>
-    <footer>
-      <p>&copy; 2025 MyPortfolio. All rights reserved.</p>
-      <hr />
-    </footer>
-    <hr />
-    </BrowserRouter>
-    </div>
+  return (
+    <AppContext.Provider value={{ users, setUsers, user, setUser }}>
+      <BrowserRouter>
+        <Header />
+        <Routes>
+          <Route index element={<Product />} />
+          <Route path="/" element={<Product />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/logout" element={<Logout />} />
+          <Route path="/register" element={<Register />} />
+        </Routes>
+        <Footer />
+      </BrowserRouter>
+    </AppContext.Provider>
   );
 }
-export default App
+
+export default App;
