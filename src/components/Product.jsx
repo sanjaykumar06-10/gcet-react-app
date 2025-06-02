@@ -1,42 +1,33 @@
-import React, { useEffect, useContext, useState } from "react";
-import { AppContext } from "../App";
-import { useNavigate } from "react-router-dom";
+import React, { useContext, useEffect, useState } from 'react';
+import axios from 'axios';
+import { AppContext } from '../App'; 
 
-export default function Logout() {
-  const { setUser } = useContext(AppContext);
-  const navigate = useNavigate();
+export default function Product() {
+  const { user } = useContext(AppContext);
   const [products, setProducts] = useState([]);
 
-  useEffect(() => {
-    // Log out the user
-    setUser(null);
-    navigate("/login");
 
-    // ✅ Fetch products correctly
-    fetch("http://localhost:8080/product")
-      .then((res) => res.json()) // ✅ fix here
-      .then((data) => setProducts(data))
-      .catch((err) => console.error("Error fetching products:", err));
+  useEffect(() => {
+    axios.get('http://localhost:8080/products')
+      .then(response => {
+        setProducts(response.data);
+      })
+      .catch(error => {
+        console.error("Error fetching products:", error);
+      });
   }, []);
 
   return (
     <div>
-      <div>Logging out...</div>
-      <div>
-        <h3>Products (fetched on logout):</h3>
-        {products.length === 0 ? (
-          <p>No products loaded.</p>
-        ) : (
-          <ul>
-            {products.map((prod) => (
-              <li key={prod.id}>
-                {prod.name} - ${prod.price}
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
+      <h3>Welcome {user.name}!</h3>
+      <h4>Product List:</h4>
+      <ul>
+        {products.map(prod => (
+          <li key={prod.id}>
+            {prod.name} - ₹{prod.price}
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
-
