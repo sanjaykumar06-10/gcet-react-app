@@ -8,7 +8,7 @@ export default function Header() {
   const { user } = useContext(AppContext);
   return (
     <div className="header">
-      <h1>My Online Shop</h1>
+      <h1>LEGOS STORE</h1>
       <div className="nav-links">
         <Link to="/">Home</Link>
         <Link to="/cart">Cart</Link>

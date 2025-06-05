@@ -17,15 +17,15 @@ export default function Login() {
     }
 
     try {
-      const url = `${API}/users/login`;  // <-- Updated URL here
+      const url = `${API}/users/login`;
       const found = await axios.post(url, user);
       console.log("Login response:", found.data);
 
-      if (found.data.token) {
+      if (found.data.loggedIn) {
         setUser(found.data);
         Navigate("/");
       } else {
-        setMsg("Invalid User or Password");
+        setMsg(found.data.message || "Invalid User or Password");
       }
     } catch (error) {
       console.error("Login error:", error.response?.data || error.message);

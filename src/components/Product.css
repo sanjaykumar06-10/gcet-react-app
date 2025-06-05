@@ -1,16 +1,16 @@
-/* Product.css */
-
 .product-container {
   padding: 2rem;
   max-width: 1200px;
   margin: auto;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: #333;
+  color: #212121;
+  background-color: #f9f9f9; /* Light neutral background */
 }
 
 h3, h4 {
   text-align: center;
   margin-bottom: 1rem;
+  color: #d32f2f; /* LEGO Red for titles */
 }
 
 .product-grid {
@@ -21,10 +21,10 @@ h3, h4 {
 }
 
 .product-card {
-  background: #fff;
+  background: #ffffff;
   border: 1px solid #e0e0e0;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.06);
   padding: 1.5rem;
   text-align: center;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -32,34 +32,37 @@ h3, h4 {
 
 .product-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
 }
 
 .product-name {
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   font-weight: 600;
   margin-bottom: 0.5rem;
+  color: #1976d2; /* LEGO Blue */
 }
 
 .product-price {
   font-size: 1.1rem;
-  color: #1a8917;
+  color: #388e3c; /* LEGO Green */
   margin-bottom: 1rem;
+  font-weight: 500;
 }
 
 .buy-btn {
-  background-color: #1a73e8;
-  color: #fff;
+  background-color: #fbc02d; /* LEGO Yellow accent */
+  color: #000;
   padding: 0.6rem 1.2rem;
   border: none;
   border-radius: 8px;
   font-size: 1rem;
   cursor: pointer;
+  font-weight: 600;
   transition: background-color 0.2s ease;
 }
 
 .buy-btn:hover {
-  background-color: #155ab6;
+  background-color: #f9a825; /* darker yellow */
 }
 
 @media (max-width: 600px) {
@@ -73,5 +76,51 @@ h3, h4 {
 
   .buy-btn {
     width: 100%;
+  }
+}
+
+.go-to-cart {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.go-to-cart button {
+  background-color: #1976d2;
+  color: white;
+  padding: 12px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.go-to-cart button:hover {
+  background-color: #0d47a1;
+}
+
+.added-message {
+  margin-bottom: 8px;
+  padding: 8px 12px;
+  background-color: #4caf50;
+  color: white;
+  font-weight: 600;
+  border-radius: 4px;
+  text-align: center;
+  animation: fadeInOut 2s ease forwards;
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  10%, 90% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-10px);
   }
 }
