@@ -11,7 +11,7 @@ export default function Product() {
 const API = import.meta.env.VITE_API_URL 
   const fetchProducts = async () => {
     try {
-      const res = await axios.get(`${API}/products`);
+      const res = await axios.get(`${API}/products/all`);
       setProducts(res.data);
     } catch (err) {
       console.error("Error fetching products:", err);
