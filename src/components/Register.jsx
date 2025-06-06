@@ -6,18 +6,18 @@ import "./Register.css";
 
 export default function Register() {
   const { users, setUsers } = useContext(AppContext);
-  const [user, setUser] = useState({ name: "", email: "", pass: "" });
+  const [user, setUser] = useState({ name: "", email: "", password: "" });
   const Navigate = useNavigate();
   const API = import.meta.env.VITE_API_URL;
 
   const handleSubmit = async () => {
     try {
-      if (!user.name || !user.email || !user.pass) {
+      if (!user.name || !user.email || !user.password) {
         alert("Please fill in all fields");
         return;
       }
 
-      const url = `https://gcet-node-app-beige.vercel.app/users/register`;  // <-- Updated URL here
+      const url = `${API}/users/register`;
       const response = await axios.post(url, user);
       console.log("Registered:", response.data);
       Navigate("/login");
@@ -49,7 +49,7 @@ export default function Register() {
       <hr />
       {users?.map((value, idx) => (
         <li key={idx}>
-          {value.name} - {value.email} - {value.pass}
+          {value.name} - {value.email} - {value.password}
         </li>
       ))}
     </div>
