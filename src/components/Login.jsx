@@ -52,7 +52,7 @@ export default function Login() {
         <input
           type="password"
           placeholder="Password"
-          onChange={(e) => setUser({ ...user, pass: e.target.value })}
+          onChange={(e) => setUser({ ...user, password: e.target.value })}
         />
       </p>
       <button onClick={handleSubmit}>Submit</button>
