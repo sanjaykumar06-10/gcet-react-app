@@ -11,7 +11,7 @@ export default function Login() {
   const API = import.meta.env.VITE_API_URL;
 
   const handleSubmit = async () => {
-    if (!user.email || !user.pass) {
+    if (!user.email || !user.password) {
       setMsg("Please enter both email and password.");
       return;
     }
