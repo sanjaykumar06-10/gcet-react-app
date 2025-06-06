@@ -14,7 +14,7 @@ export default function Product() {
 
   const fetchProducts = async () => {
     try {
-      const res = await axios.get(`${API}/products/all`);
+      const res = await axios.get(`https://gcet-node-app-beige.vercel.app/products/all`);
       setProducts(res.data);
     } catch (err) {
       console.error("Error fetching products:", err);
