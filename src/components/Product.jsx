@@ -14,7 +14,7 @@ export default function Product() {
 
   const fetchProducts = async () => {
     try {
-      const res = await axios.get(`https://gcet-node-app-beige.vercel.app/products/all`);
+      const res = await axios.get(`${API}/products/all`);
       setProducts(res.data);
     } catch (err) {
       console.error("Error fetching products:", err);
@@ -36,12 +36,8 @@ export default function Product() {
     }
 
     setCart(updatedCart);
-
-    // Show confirmation message
     setShowAddedMsg(true);
-    setTimeout(() => {
-      setShowAddedMsg(false);
-    }, 1000); // Hide after 2 seconds
+    setTimeout(() => setShowAddedMsg(false), 1000);
   };
 
   const goToCart = () => {
