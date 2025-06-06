@@ -43,7 +43,7 @@ export default function Register() {
       <input
         type="password"
         placeholder="New Password"
-        onChange={(e) => setUser({ ...user, pass: e.target.value })}
+        onChange={(e) => setUser({ ...user, password: e.target.value })}
       />
       <button onClick={handleSubmit}>Submit</button>
       <hr />
