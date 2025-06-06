@@ -17,7 +17,8 @@ export default function Register() {
         return;
       }
 
-      const url = `${API}/users/register`;
+    const url = `https://gcet-node-app-beige.vercel.app/users/register`;
+
       const response = await axios.post(url, user);
       console.log("Registered:", response.data);
       Navigate("/login");
